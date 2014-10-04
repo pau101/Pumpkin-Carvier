@@ -61,6 +61,7 @@ public class TileEntityPumpkinRenderer extends TileEntitySpecialRenderer {
 		TileEntityPumpkin pumpkin = (TileEntityPumpkin) tileEntity;
 		GL11.glPushMatrix();
 		GL11.glTranslated(x, y, z);
+		GL11.glEnable(GL11.GL_CULL_FACE);
 		PumpkinFace[] faces = pumpkin.getFaces();
 		for (int i = 0; i < faces.length; i++) {
 			PumpkinFace face = faces[i];
