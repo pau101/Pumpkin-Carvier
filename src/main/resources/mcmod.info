@@ -1,0 +1,16 @@
+[
+{
+  "modid": "pumpkincarvier",
+  "name": "Pumpkin Carvier",
+  "description": "Makes pumpkins carvable.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["pau101"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
