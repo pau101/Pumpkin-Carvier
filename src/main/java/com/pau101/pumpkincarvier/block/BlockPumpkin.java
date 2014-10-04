@@ -95,34 +95,20 @@ public class BlockPumpkin extends net.minecraft.block.BlockPumpkin implements IT
 		} else if ((heldItem = player.getHeldItem()) != null) {
 			Item item = heldItem.getItem();
 			if (item == Items.shears) {
-				int pixelX = MathHelper.floor_float((side < 4 ? dx : dy) * 16);
-				int pixelY = MathHelper.floor_float((side != 2 && side != 3 ? dz : dy) * 16);
-				int temp;
-				switch (side) {
-				case 0:
-				case 1:
-					pixelY = 15 - pixelY;
-					break;
-				case 2:
-					pixelY = 15 - pixelY;
-					pixelX = 15 - pixelX;
-					break;
-				case 3:
-					pixelY = 15 - pixelY;
-					break;
-				case 4:
-					temp = pixelX;
-					pixelX = pixelY;
-					pixelY = 15 - temp;
-					break;
-				case 5:
-					temp = pixelX;
-					pixelX = 15 - pixelY;
-					pixelY = 15 - temp;
-					break;
-				default:
-				}
 				if (!world.isRemote) {
+					int pixelX = MathHelper.floor_float((side < 4 ? dx : dy) * 16);
+					int pixelY = MathHelper.floor_float((side != 2 && side != 3 ? dz : dy) * 16);
+					if (side == 2 || side > 3) {
+						pixelX = 15 - pixelX;
+					}
+					if (side != 4) {
+						pixelY = 15 - pixelY;
+					}
+					if (side > 3) {
+						int temp = pixelX;
+						pixelX = pixelY;
+						pixelY = temp;
+					}
 					TileEntity tileEntity = world.getTileEntity(x, y, z);
 					if (tileEntity instanceof TileEntityPumpkin) {
 						TileEntityPumpkin tileEntityPumpkin = (TileEntityPumpkin) tileEntity;
